@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            display: inline-block;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Life Expectancy Predictor</h2>
+        <p>Enter your details to predict your expected death date</p>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="date" id="dob" required>
+        <button onclick="predictDeath()">Predict</button>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function predictDeath() {
+            let name = document.getElementById('name').value;
+            let dob = document.getElementById('dob').value;
+            
+            if (!name || !dob) {
+                alert("Please enter both your name and date of birth.");
+                return;
+            }
+
+            let birthYear = new Date(dob).getFullYear();
+            let randomLifeSpan = Math.floor(Math.random() * 50) + 50; // Random lifespan between 50 and 100
+            let deathYear = birthYear + randomLifeSpan;
+
+            document.getElementById('result').innerText = `${name}, you are expected to live until the year ${deathYear}.`;
+        }
+    </script>
+
+</body>
+</html>
